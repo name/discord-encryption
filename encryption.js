@@ -207,6 +207,18 @@ class encryption {
                 }
             }
 
+            //  decrypt all messages
+            function decrypt_all_msg() {
+                $(".markup").each(function() {
+                    var msg = $(this).text().trim();
+                    if (msg.substring(0, 28) == "--aes256-encrypted-message--") {
+                        var msg_enc = msg.substring(28, msg.lastIndexOf("}") + 1);
+                        $(this).html(msg_dec(msg_enc)).addClass("decrypted");
+                    }
+                });
+            }
+            decrypt_all_msg();
+
         }
     }
 
