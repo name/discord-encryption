@@ -185,6 +185,16 @@ class encryption {
                 return localStorageEncryption["password"];
             }
 
+            //  encrypt message using set password - add an encryption prefix for identification
+            function msg_enc(msg_original) {
+                var msg_enc = sjcl.encrypt(shared_password, msg_original, {
+                        count: 2048,
+                        ks: 256
+                    }),
+                    msg_final = "--aes256-encrypted-message--" + String(msg_enc);
+                return msg_final;
+            }
+
         }
     }
 
