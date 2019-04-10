@@ -25,6 +25,8 @@ class encryption {
         try {
             window.shared_password = load_password();
             if (shared_password == null || shared_password == undefined) throw "error";
+        } catch (error) {
+            window.shared_password = "";
         }
     }
 
