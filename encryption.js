@@ -15,7 +15,11 @@ class encryption {
     start() {
 
         console.clear();
-
+        //  load password from local storage
+        function load_password() {
+            var localStorageEncryption = localStorage.discordEncryption ? JSON.parse(localStorage.discordEncryption) : {};
+            return localStorageEncryption["password"];
+        }
     }
 
 
