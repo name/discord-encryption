@@ -20,6 +20,12 @@ class encryption {
             var localStorageEncryption = localStorage.discordEncryption ? JSON.parse(localStorage.discordEncryption) : {};
             return localStorageEncryption["password"];
         }
+
+        //  set encryption / decryption password
+        try {
+            window.shared_password = load_password();
+            if (shared_password == null || shared_password == undefined) throw "error";
+        }
     }
 
 
