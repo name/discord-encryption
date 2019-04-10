@@ -19,4 +19,19 @@ class encryption {
     }
 
 
+    getName() {
+        return 'Encryption';
+    }
+
+    getAuthor() {
+        return 'Charlie';
+    }
+
+    getVersion() {
+        return '1.1.0';
+    }
+
+    getDescription() {
+        return 'aes-256 encryption';
+    }
 };
