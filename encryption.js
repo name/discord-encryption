@@ -338,6 +338,13 @@ class encryption {
             }
             add_encryption_button();
 
+            $(".guild, .channel, .containerDefault-1ZnADq").click(function() {
+                encryption_input_toggle("hide");
+                setTimeout(function() {
+                    add_encryption_button();
+                }, 88);
+            });
+
         }
     }
 
