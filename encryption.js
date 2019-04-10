@@ -195,6 +195,12 @@ class encryption {
                 return msg_final;
             }
 
+            //  detect URLs in plain text and replace with links
+            function replaceURLWithHTMLLinks(text) {
+                var exp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+                return text.replace(exp, "<a href='$1' target='_blank'>$1</a>");
+            }
+
             //  decrypt message using set password
             function msg_dec(msg_enc) {
                 try {
