@@ -195,6 +195,16 @@ class encryption {
                 return msg_final;
             }
 
+            //  decrypt message using set password
+            function msg_dec(msg_enc) {
+                try {
+                    return replaceURLWithHTMLLinks(sjcl.decrypt(shared_password, msg_enc, {
+                        count: 2048,
+                        ks: 256
+                    }));
+                }
+            }
+
         }
     }
 
