@@ -284,6 +284,60 @@ class encryption {
                 }
             }
 
+            //  add encryption button - click to encrypt / decrypt message
+            function add_encryption_button() {
+                if (document.getElementById("encryptionButton") == null || document.getElementById("encryptionButton") == undefined) {
+                    $('svg[class*=attachButton]').after(`
+            						<svg id="encryptionButton" class="encryptionButton" style="width:24px;height:24px" viewBox="0 0 24 24">
+            							<path fill="#888" d="M18,8H17V6A5,5 0 0,0 12,1A5,5 0 0,0 7,6V8H6A2,2 0 0,0 4,10V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V10A2,2 0 0,0 18,8M8.9,6C8.9,4.29 10.29,2.9 12,2.9C13.71,2.9 15.1,4.29 15.1,6V8H8.9V6M16,16H13V19H11V16H8V14H11V11H13V14H16V16Z" />
+            						</svg>
+                    `);
+
+                    $(".encryptionButton").click(function() {
+                        if ($("textarea").val().length < 1) {
+                          if ($("#encryptionInput").length < 1) {
+                              encryption_input_toggle("show");
+                          } else {
+                              encryption_input_toggle("hide");
+                          }
+                        } else {
+                            if ($("textarea").val().substring(0, 28) == "--aes256-encrypted-message--") {
+                                var msg = $("textarea").val().substring(28),
+                                    textarea = document.querySelector("textarea"),
+                                    textareaInstance = BDfunctionsDevilBro.getOwnerInstance({
+                                        "node": textarea,
+                                        "name": "ChannelTextAreaForm",
+                                        "up": true
+                                    });
+                                textareaInstance.setState({
+                                    textValue: msg_dec(msg)
+                                });
+                            } else {
+                                var msg = $("textarea").val(),
+                                    textarea = document.querySelector("textarea"),
+                                    textareaInstance = BDfunctionsDevilBro.getOwnerInstance({
+                                        "node": textarea,
+                                        "name": "ChannelTextAreaForm",
+                                        "up": true
+                                    });
+                                textareaInstance.setState({
+                                    textValue: msg_enc(msg)
+                                });
+                            }
+                        }
+                    });
+
+                    if (shared_password.length < 3) {
+                        encryption_input_toggle("show");
+                    }
+                    $(".encryptionButton").bind("contextmenu", function(e) {
+                        e.preventDefault();
+                        encryption_input_toggle("");
+                    });
+                }
+            }
+            add_encryption_button();
+
         }
     }
 
