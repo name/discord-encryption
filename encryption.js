@@ -202,6 +202,8 @@ class encryption {
                         count: 2048,
                         ks: 256
                     }));
+                } catch (error) {
+                    return "<span class='not-decrypted'>Oh no! this message failed to be decrypted</span>";
                 }
             }
 
