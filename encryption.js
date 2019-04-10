@@ -170,6 +170,24 @@ class encryption {
 		    `);
     }
 
+    observer({addedNodes}) {
+
+        if (addedNodes.length && addedNodes[0].classList && addedNodes[0].classList.contains('chat') ||
+            addedNodes.length && addedNodes[0].classList && addedNodes[0].classList.contains('markup') ||
+            addedNodes.length && addedNodes[0].classList && addedNodes[0].classList.contains('message') ||
+            addedNodes.length && addedNodes[0].classList && addedNodes[0].classList.contains('message-sending') ||
+            addedNodes.length && addedNodes[0].classList && addedNodes[0].classList.contains('hide-overflow') ||
+            addedNodes.length && addedNodes[0].classList && addedNodes[0].classList.contains('messages-wrapper')) {
+
+            //  load password from local storage
+            function load_password() {
+                var localStorageEncryption = localStorage.discordEncryption ? JSON.parse(localStorage.discordEncryption) : {};
+                return localStorageEncryption["password"];
+            }
+
+        }
+    }
+
 
     getName() {
         return 'Encryption';
