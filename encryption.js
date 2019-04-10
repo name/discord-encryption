@@ -10,5 +10,13 @@ class encryption {
 
     }
 
+    stop() {}
+
+    start() {
+
+        console.clear();
+
+    }
+
 
 };
